@@ -99,8 +99,7 @@ ${subTable}`;
         .relative(__dirname, filePath)
         .replace(/\\/g, "/");
 
-      tableContent += `
-| ${fileDate} | [${firstLine}](${relativeFilePath}) | ${secondLine} |`;
+      tableContent += `| ${fileDate} | [${firstLine}](${relativeFilePath}) | ${secondLine} |\n`;
     }
   }
 
