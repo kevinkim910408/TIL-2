@@ -23,7 +23,7 @@ jobs:
         git config --local user.email "kjunho.dev@gmail.com"
         git config --local user.name "Kevin's slave Bot"
         git add README.md
-        git commit -m "Update README.md"
-        git push
+        git commit -m "Update README.md" || echo "No changes to commit"
+        git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
