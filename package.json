@@ -1,0 +1,19 @@
+{
+  "name": "today-i-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-readme.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinkim910408/TIL-2"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinkim910408/TIL-2"
+  },
+  "homepage": "https://github.com/kevinkim910408/TIL-2"
+}
