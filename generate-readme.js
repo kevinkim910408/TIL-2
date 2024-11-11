@@ -4,14 +4,13 @@ const path = require("path");
 
 const readdir = util.promisify(fs.readdir);
 
-const excludedFolders = [".git"];
+const excludedFolders = [".git", ".github", "workflows"];
 const excludedFiles = [
   "generate-readme.js",
   "README.md",
   "package-lock.json",
   "package.json",
 ];
-
 async function countFilesAndFolders(dir) {
   const files = await readdir(dir, { withFileTypes: true });
 
@@ -88,15 +87,15 @@ ${subTable}`;
       const lines = fileContent.trim().split("\n");
 
       const firstLine = lines[0].replace(/^#+\s*/, "");
-      const secondLine = lines.length > 1 ? lines[1] : "";
-
+      const secondLine = lines.length > 1 ? lines[2] : "";
       const fileDate = await getFileDate(filePath);
 
+      const relativeFilePath = path
+        .relative(__dirname, filePath)
+        .replace(/\\/g, "/");
+
       tableContent += `
-| ${fileDate} | [${firstLine}](${path.relative(
-        __dirname,
-        filePath
-      )}) | ${secondLine} |`;
+| ${fileDate} | [${firstLine}](${relativeFilePath}) | ${secondLine} |`;
     }
   }
 
@@ -110,9 +109,6 @@ async function generateReadme() {
   const readmeContent = `# Kevin's TIL
 
   I've learned ${counts.fileCount} things in ${folderCounts} categories so far!
-
-  | Date       | Title | Description |
-  |------------|-------|-------------|
   ${tableContent}
   `;
 
