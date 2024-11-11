@@ -62,6 +62,11 @@ async function generateTable(dir, depth = 0) {
 
   let tableContent = "";
 
+  if (depth !== 0) {
+    tableContent += `| Date       | Title | Description |\n`;
+    tableContent += `|------------|-------|-------------|\n`;
+  }
+
   const title = depth === 0 ? "#" : "#".repeat(depth + 2);
 
   for (const file of files) {
@@ -87,7 +92,7 @@ ${subTable}`;
       const lines = fileContent.trim().split("\n");
 
       const firstLine = lines[0].replace(/^#+\s*/, "");
-      const secondLine = lines.length > 1 ? lines[2] : "";
+      const secondLine = lines.length > 1 ? lines[2].replace(/^#+\s*/, "") : "";
       const fileDate = await getFileDate(filePath);
 
       const relativeFilePath = path
