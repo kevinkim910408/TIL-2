@@ -63,7 +63,7 @@ async function generateTable(dir, depth = 0) {
   let tableContent = "";
 
   if (depth !== 0) {
-    tableContent += `| Date| Link | Title | \n`;
+    tableContent += `| Date| Link | Title |\n`;
     tableContent += `|-----|------|-------|\n`;
   }
 
@@ -99,7 +99,7 @@ ${subTable}`;
         .relative(__dirname, filePath)
         .replace(/\\/g, "/");
 
-      tableContent += `| ${fileDate} | [LINK](${relativeFilePath})| ${firstLine}\n`;
+      tableContent += `| ${fileDate} | [->](${relativeFilePath})| ${firstLine}\n`;
     }
   }
 

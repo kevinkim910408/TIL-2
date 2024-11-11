@@ -4,8 +4,8 @@
   
 # TEST
 
-| Date| Link | Title | 
+| Date| Link | Title |
 |-----|------|-------|
-| 2024-11-11 | [LINK](TEST/test.md)| Test
+| 2024-11-11 | [->](TEST/test.md)| Test
 
   
