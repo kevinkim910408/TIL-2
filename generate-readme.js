@@ -41,7 +41,7 @@ async function countFilesAndFolders(dir) {
 
 async function countFolders(dir) {
   const files = await readdir(dir, { withFileTypes: true });
-  let folderCount = 1;
+  let folderCount = 0;
 
   for (const file of files) {
     if (file.isDirectory() && !excludedFolders.includes(file.name)) {
