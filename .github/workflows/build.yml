@@ -25,5 +25,4 @@ jobs:
         git add README.md
         git commit -m "Update README.md" || echo "No changes to commit"
         git push origin main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
