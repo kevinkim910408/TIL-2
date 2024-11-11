@@ -1,0 +1,29 @@
+name: Build README
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+    - name: Install dependencies
+      run: |
+        npm install
+    - name: Generate README
+      run: |
+        node generate-readme.js
+        git config --local user.email "kjunho.dev@gmail.com"
+        git config --local user.name "Kevin's slave Bot"
+        git add README.md
+        git commit -m "Update README.md"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
