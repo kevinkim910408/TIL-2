@@ -63,8 +63,8 @@ async function generateTable(dir, depth = 0) {
   let tableContent = "";
 
   if (depth !== 0) {
-    tableContent += `| Date       | Title | Description |\n`;
-    tableContent += `|------------|-------|-------------|\n`;
+    tableContent += `| Date| Title | Description| Link | \n`;
+    tableContent += `|-----|-------|------------|------|\n`;
   }
 
   const title = depth === 0 ? "#" : "#".repeat(depth + 2);
@@ -91,15 +91,18 @@ ${subTable}`;
       });
       const lines = fileContent.trim().split("\n");
 
-      const firstLine = lines[0].replace(/^#+\s*/, "");
-      const secondLine = lines.length > 1 ? lines[2].replace(/^#+\s*/, "") : "";
+      const firstLine = lines[0].replace(/^#+\s*/, "").replace(/\n/g, " ");
+      const secondLine =
+        lines.length > 1
+          ? lines[2].replace(/^#+\s*/, "").replace(/^#+\s*/, "")
+          : "";
       const fileDate = await getFileDate(filePath);
 
       const relativeFilePath = path
         .relative(__dirname, filePath)
         .replace(/\\/g, "/");
 
-      tableContent += `| ${fileDate} | [${firstLine}](${relativeFilePath}) | ${secondLine} |\n`;
+      tableContent += `| ${fileDate} | ${firstLine} | ${secondLine} | ${relativeFilePath}\n`;
     }
   }
 
