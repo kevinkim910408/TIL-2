@@ -64,7 +64,7 @@ async function generateTable(dir, depth = 0) {
 
   if (depth !== 0) {
     tableContent += `| Date       | Title | Description |\n`;
-    tableContent += `|------------|-------|-------------|\n`;
+    tableContent += `|------------|-------|-------------|`;
   }
 
   const title = depth === 0 ? "#" : "#".repeat(depth + 2);
