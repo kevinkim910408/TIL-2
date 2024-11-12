@@ -1,6 +1,6 @@
 # Kevin's TIL
 
-  I've learned 5 things in 1 categories so far!
+  I've learned 6 things in 1 categories so far!
   
 # Math
 
@@ -11,5 +11,6 @@
 | 2024-11-12 | [👉](Math/02_Probability_Addition_Rule.md)| Probability - Addition Rule (확률 - 합의 법칙)
 | 2024-11-12 | [👉](Math/03_Probability_Multiplication_Rule.md)| Probability - Multiplication Rule (확률 - 곱의 법칙)
 | 2024-11-12 | [👉](Math/04_Example.md)| Addition & Multiplication Rule example (합 / 곱의 법칙 예제)
+| 2024-11-12 | [👉](Math/05_Probability_Permutation.md)| Probability - Permutation (확률 - 순열)
 
   
