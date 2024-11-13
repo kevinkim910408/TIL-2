@@ -15,7 +15,7 @@ const excludedFiles = [
 async function getGitCommitDate(filePath) {
   return new Promise((resolve, reject) => {
     exec(
-      `git log --diff-filter=A --format=%ad --date=short -- ${filePath}`,
+      `git log --diff-filter=A --format=%ad --date=short -- ${filePath} | head -n 1`,
       (error, stdout, stderr) => {
         if (error) {
           reject(error);
