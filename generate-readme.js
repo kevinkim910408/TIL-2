@@ -54,7 +54,7 @@ async function countFolders(dir) {
 
 async function getFileDate(filePath) {
   const stats = await fs.promises.stat(filePath);
-  return stats.mtime.toISOString().split("T")[0];
+  return stats.birthtime.toISOString().split("T")[0];
 }
 
 async function generateTable(dir, depth = 0) {
