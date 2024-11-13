@@ -77,6 +77,8 @@ nCr = r!(n−r)!
 
 예제 2: k+1C4 = 2x kC4 k = ?
 
+![image](https://github.com/user-attachments/assets/2bd3113b-0ed7-44e6-86ad-42a6cda9fb2a)
+
 - k = 7
 
 ---
