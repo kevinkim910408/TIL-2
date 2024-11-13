@@ -1,7 +1,7 @@
 const fs = require("fs");
 const util = require("util");
 const path = require("path");
-
+const { exec } = require("child_process");
 const readdir = util.promisify(fs.readdir);
 
 const excludedFolders = [".git", ".github", "workflows"];
@@ -11,6 +11,22 @@ const excludedFiles = [
   "package-lock.json",
   "package.json",
 ];
+
+async function getGitCommitDate(filePath) {
+  return new Promise((resolve, reject) => {
+    exec(
+      `git log --diff-filter=A --format=%ad --date=short -- ${filePath}`,
+      (error, stdout, stderr) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(stdout.trim());
+        }
+      }
+    );
+  });
+}
+
 async function countFilesAndFolders(dir) {
   const files = await readdir(dir, { withFileTypes: true });
 
@@ -37,24 +53,6 @@ async function countFilesAndFolders(dir) {
   }
 
   return { fileCount, folderCount };
-}
-
-async function countFolders(dir) {
-  const files = await readdir(dir, { withFileTypes: true });
-  let folderCount = 0;
-
-  for (const file of files) {
-    if (file.isDirectory() && !excludedFolders.includes(file.name)) {
-      folderCount++;
-    }
-  }
-
-  return folderCount;
-}
-
-async function getFileDate(filePath) {
-  const stats = await fs.promises.stat(filePath);
-  return stats.birthtime.toISOString().split("T")[0];
 }
 
 async function generateTable(dir, depth = 0) {
@@ -93,7 +91,7 @@ ${subTable}`;
 
       const firstLine = lines[0].replace(/^#+\s*/, "").replace(/\n/g, " ");
 
-      const fileDate = await getFileDate(filePath);
+      const fileDate = await getGitCommitDate(filePath);
 
       const relativeFilePath = path
         .relative(__dirname, filePath)
