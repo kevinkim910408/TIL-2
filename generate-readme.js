@@ -104,6 +104,24 @@ ${subTable}`;
   return tableContent;
 }
 
+async function countFolders(dir) {
+  const files = await readdir(dir, { withFileTypes: true });
+  let folderCount = 0;
+
+  for (const file of files) {
+    if (file.isDirectory() && !excludedFolders.includes(file.name)) {
+      folderCount++;
+    }
+  }
+
+  return folderCount;
+}
+
+async function getFileDate(filePath) {
+  const stats = await fs.promises.stat(filePath);
+  return stats.birthtime.toISOString().split("T")[0];
+}
+
 async function generateReadme() {
   const counts = await countFilesAndFolders(__dirname);
   const folderCounts = await countFolders(__dirname);
