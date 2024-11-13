@@ -1,6 +1,6 @@
 # Kevin's TIL
 
-  I've learned 7 things in 1 categories so far!
+  I've learned 8 things in 1 categories so far!
   
 # Math
 
@@ -13,5 +13,6 @@
 | 2024-11-13 | [👉](Math/04_Example.md)| Addition & Multiplication Rule example (합 / 곱의 법칙 예제)
 | 2024-11-13 | [👉](Math/05_Probability_Permutation.md)| Probability - Permutation (확률 - 순열)
 | 2024-11-13 | [👉](Math/06_Probability_Combination.md)| Probability - Combination (확률 - 조합)
+| 2024-11-13 | [👉](Math/07_Example_combination_with_repetition.md)| Permutation & Combination example (순열 / 조합 예제 - 심화: 중복조합)
 
   
