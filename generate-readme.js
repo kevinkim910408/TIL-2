@@ -84,6 +84,7 @@ ${subTable}`;
         continue;
       }
       const filePath = path.join(dir, file.name);
+      console.log(filePath);
       const fileContent = await fs.promises.readFile(filePath, {
         encoding: "utf-8",
       });
@@ -92,7 +93,7 @@ ${subTable}`;
       const firstLine = lines[0].replace(/^#+\s*/, "").replace(/\n/g, " ");
 
       const fileDate = await getGitCommitDate(filePath);
-
+      console.log(fileDate);
       const relativeFilePath = path
         .relative(__dirname, filePath)
         .replace(/\\/g, "/");
